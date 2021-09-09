@@ -19,4 +19,9 @@ class DigitalHouseManager(
         var novoProfessorAdjunto = ProfessorAdjunto(nome, sobrenome, 0, codigo, horasMonitoria)
         listaDeProfessores.add(novoProfessorAdjunto)
     }
+
+    fun registrarProfessorTitular(nome: String, sobrenome: String, codigo: Int, especialidade: String) {
+        var novoProfessorTitular = ProfessorTitular(nome, sobrenome, 0, codigo, especialidade)
+        listaDeProfessores.add(novoProfessorTitular)
+    }
 }
