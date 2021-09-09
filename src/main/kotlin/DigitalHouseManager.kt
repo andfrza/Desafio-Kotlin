@@ -1,7 +1,9 @@
-class DigitalHouseManager(
-    var listaDeAlunos: MutableList<Aluno>, var listaDeProfessores: MutableList<Professor>,
-    var listaDeCursos: MutableList<Curso>, var listaDeMatriculas: MutableList<Matricula>
-) {
+class DigitalHouseManager {
+    var listaDeAlunos: MutableList<Aluno> = mutableListOf()
+    var listaDeProfessores: MutableList<Professor> = mutableListOf()
+    var listaDeCursos: MutableList<Curso> = mutableListOf()
+    var listaDeMatriculas: MutableList<Matricula> = mutableListOf()
+
     fun registrarCurso(nome: String, codigoCurso: Int, quantidadeMaximaAlunos: Int) {
         var novoCurso = Curso(nome, codigoCurso, quantidadeMaximaAlunos)
         listaDeCursos.add(novoCurso)
@@ -45,12 +47,12 @@ class DigitalHouseManager(
         }
     }
 
-    fun matricularAluno(nomeAluno: String, sobrenomeAluno: String, codigoAluno: Int) {
+    fun matricularNovoAluno(nomeAluno: String, sobrenomeAluno: String, codigoAluno: Int) {
         var novoAluno = Aluno(nomeAluno, sobrenomeAluno, codigoAluno)
         listaDeAlunos.add(novoAluno)
     }
 
-    fun matricularAluno(codigoAluno: Int, codigoCurso: Int) {
+    fun matricularAlunoEmCurso(codigoAluno: Int, codigoCurso: Int) {
 
         var possibilidadeMatricula: Boolean
 
@@ -59,33 +61,48 @@ class DigitalHouseManager(
                 for (item2 in listaDeCursos) {
                     if (item2.codigoCurso == codigoCurso) {
                         possibilidadeMatricula = item2.adicionarAluno(item)
-                        if(possibilidadeMatricula){
-                            var novaMatricula = Matricula(item,item2)
+                        if (possibilidadeMatricula) {
+                            var novaMatricula = Matricula(item, item2)
                             listaDeMatriculas.add(novaMatricula)
                             println("Matrícula realizada com sucesso!")
+                        } else {
+                            println("Desculpe, não foi possível realizar a sua matrícula por falta de vagas.")
                         }
-                        else{println("Desculpe, não foi possível realizar a sua matrícula por falta de vagas.")}
+                    } else {
+                        println("Curso não encontrado.")
                     }
-                    else{println("Curso não encontrado.")}
                 }
+            } else {
+                println("Aluno não encontrado.")
             }
-            else{println("Aluno não encontrado.")}
         }
     }
 
-    fun alocarProfessores(codigoCurso: Int,codigoProfessorAdjunto: Int, codigoProfessorTitular: Int){
-        for (adjunto in listaDeProfessores){
-            if(adjunto.codigoDeProfessor==codigoProfessorAdjunto){
-                for(titular in listaDeProfessores){
-                    if(titular.codigoDeProfessor==codigoProfessorTitular){
-                        for (curso in listaDeCursos){
-                            if(curso.codigoCurso==codigoCurso){
-                                listaDeCursos[listaDeCursos.indexOf(curso)]=Curso(curso.nomeDoCurso,curso.codigoCurso,curso.quantidadeMaximaDeAlunos,titular,adjunto)
-                            }else{println("Curso não encontrado.")}
+    fun alocarProfessores(codigoCurso: Int, codigoProfessorAdjunto: Int, codigoProfessorTitular: Int) {
+        for (adjunto in listaDeProfessores) {
+            if (adjunto.codigoDeProfessor == codigoProfessorAdjunto) {
+                for (titular in listaDeProfessores) {
+                    if (titular.codigoDeProfessor == codigoProfessorTitular) {
+                        for (curso in listaDeCursos) {
+                            if (curso.codigoCurso == codigoCurso) {
+                                listaDeCursos[listaDeCursos.indexOf(curso)] = Curso(
+                                    curso.nomeDoCurso,
+                                    curso.codigoCurso,
+                                    curso.quantidadeMaximaDeAlunos,
+                                    titular,
+                                    adjunto
+                                )
+                            } else {
+                                println("Curso não encontrado.")
+                            }
                         }
-                    }else{println("Professor titular não encontrado.")}
+                    } else {
+                        println("Professor titular não encontrado.")
+                    }
                 }
-            }else{println("Professor adjunto não encontrado.")}
+            } else {
+                println("Professor adjunto não encontrado.")
+            }
         }
     }
 }
