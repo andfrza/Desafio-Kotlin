@@ -6,4 +6,11 @@ class DigitalHouseManager(
         var novoCurso = Curso(nome,codigoCurso,quantidadeMaximaAlunos)
         listaDeCursos.add(novoCurso)
     }
+    fun excluirCurso(codigoCurso: Int){
+        for (item in listaDeCursos){
+            if(item.codigoCurso==codigoCurso){
+                listaDeCursos.remove(item)
+            }
+        }
+    }
 }
