@@ -15,26 +15,61 @@ class DigitalHouseManager(
         }
     }
 
-    fun registrarProfessorAdjunto(nome: String, sobrenome: String, codigo: Int, horasMonitoria: Int) {
-        var novoProfessorAdjunto = ProfessorAdjunto(nome, sobrenome, 0, codigo, horasMonitoria)
+    fun registrarProfessorAdjunto(
+        nomeProfessor: String,
+        sobrenomeProfessor: String,
+        codigoProfessor: Int,
+        horasMonitoria: Int
+    ) {
+        var novoProfessorAdjunto =
+            ProfessorAdjunto(nomeProfessor, sobrenomeProfessor, 0, codigoProfessor, horasMonitoria)
         listaDeProfessores.add(novoProfessorAdjunto)
     }
 
-    fun registrarProfessorTitular(nome: String, sobrenome: String, codigo: Int, especialidade: String) {
-        var novoProfessorTitular = ProfessorTitular(nome, sobrenome, 0, codigo, especialidade)
+    fun registrarProfessorTitular(
+        nomeProfessor: String,
+        sobrenomeProfessor: String,
+        codigoProfessor: Int,
+        especialidade: String
+    ) {
+        var novoProfessorTitular =
+            ProfessorTitular(nomeProfessor, sobrenomeProfessor, 0, codigoProfessor, especialidade)
         listaDeProfessores.add(novoProfessorTitular)
     }
 
-    fun excluirProfessor(codigo: Int) {
+    fun excluirProfessor(codigoProfessor: Int) {
         for (item in listaDeProfessores) {
-            if (item.codigoDeProfessor == codigo) {
+            if (item.codigoDeProfessor == codigoProfessor) {
                 listaDeProfessores.remove(item)
             }
         }
     }
 
-    fun matricularAluno(nome: String, sobrenome: String, codigo: Int) {
-        var novoAluno = Aluno(nome, sobrenome, codigo)
+    fun matricularAluno(nomeAluno: String, sobrenomeAluno: String, codigoAluno: Int) {
+        var novoAluno = Aluno(nomeAluno, sobrenomeAluno, codigoAluno)
         listaDeAlunos.add(novoAluno)
+    }
+
+    fun matricularAluno(codigoAluno: Int, codigoCurso: Int) {
+
+        var possibilidadeMatricula: Boolean
+
+        for (item in listaDeAlunos) {
+            if (item.codigoDeAluno == codigoAluno) {
+                for (item2 in listaDeCursos) {
+                    if (item2.codigoCurso == codigoCurso) {
+                        possibilidadeMatricula = item2.adicionarAluno(item)
+                        if(possibilidadeMatricula){
+                            var novaMatricula = Matricula(item,item2)
+                            listaDeMatriculas.add(novaMatricula)
+                            println("Matrícula realizada com sucesso!")
+                        }
+                        else{println("Desculpe, não foi possível realizar a sua matrícula por falta de vagas.")}
+                    }
+                    else{println("Curso não encontrado.")}
+                }
+            }
+            else{println("Aluno não encontrado.")}
+        }
     }
 }

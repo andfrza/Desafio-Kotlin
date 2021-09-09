@@ -1,11 +1,8 @@
 import java.util.Date
 
-class Matricula {
-    init {
-        var aluno: Aluno
-        var curso: Curso
-        var dataDeMatricula: Date = Date()
-    }
+class Matricula(var aluno: Aluno, var curso: Curso) {
 
-    constructor(aluno: Aluno, curso: Curso, dataDeMatricula: Matricula)
+    var dataDeMatricula: Date = Date()
+
+    constructor(aluno: Aluno, curso: Curso, dataDeMatricula: Matricula) : this(aluno, curso)
 }
