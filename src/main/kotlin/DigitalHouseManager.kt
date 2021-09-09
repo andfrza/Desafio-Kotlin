@@ -72,4 +72,20 @@ class DigitalHouseManager(
             else{println("Aluno não encontrado.")}
         }
     }
+
+    fun alocarProfessores(codigoCurso: Int,codigoProfessorAdjunto: Int, codigoProfessorTitular: Int){
+        for (adjunto in listaDeProfessores){
+            if(adjunto.codigoDeProfessor==codigoProfessorAdjunto){
+                for(titular in listaDeProfessores){
+                    if(titular.codigoDeProfessor==codigoProfessorTitular){
+                        for (curso in listaDeCursos){
+                            if(curso.codigoCurso==codigoCurso){
+                                listaDeCursos[listaDeCursos.indexOf(curso)]=Curso(curso.nomeDoCurso,curso.codigoCurso,curso.quantidadeMaximaDeAlunos,titular,adjunto)
+                            }else{println("Curso não encontrado.")}
+                        }
+                    }else{println("Professor titular não encontrado.")}
+                }
+            }else{println("Professor adjunto não encontrado.")}
+        }
+    }
 }
