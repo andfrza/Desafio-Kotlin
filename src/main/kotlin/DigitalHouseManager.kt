@@ -1,6 +1,7 @@
 class DigitalHouseManager {
     var listaDeAlunos: MutableList<Aluno> = mutableListOf()
-    var listaDeProfessores: MutableList<Professor> = mutableListOf()
+    var listaDeProfessoresTitulares: MutableList<ProfessorTitular> = mutableListOf()
+    var listaDeProfessoresAdjuntos: MutableList<ProfessorAdjunto> = mutableListOf()
     var listaDeCursos: MutableList<Curso> = mutableListOf()
     var listaDeMatriculas: MutableList<Matricula> = mutableListOf()
 
@@ -25,7 +26,7 @@ class DigitalHouseManager {
     ) {
         var novoProfessorAdjunto =
             ProfessorAdjunto(nomeProfessor, sobrenomeProfessor, 0, codigoProfessor, horasMonitoria)
-        listaDeProfessores.add(novoProfessorAdjunto)
+        listaDeProfessoresAdjuntos.add(novoProfessorAdjunto)
     }
 
     fun registrarProfessorTitular(
@@ -36,18 +37,26 @@ class DigitalHouseManager {
     ) {
         var novoProfessorTitular =
             ProfessorTitular(nomeProfessor, sobrenomeProfessor, 0, codigoProfessor, especialidade)
-        listaDeProfessores.add(novoProfessorTitular)
+        listaDeProfessoresTitulares.add(novoProfessorTitular)
     }
 
-    fun excluirProfessor(codigoProfessor: Int) {
-        for (item in listaDeProfessores) {
+    fun excluirProfessorTitular(codigoProfessor: Int) {
+        for (item in listaDeProfessoresAdjuntos) {
             if (item.codigoDeProfessor == codigoProfessor) {
-                listaDeProfessores.remove(item)
+                listaDeProfessoresAdjuntos.remove(item)
             }
         }
     }
 
-    fun matricularNovoAluno(nomeAluno: String, sobrenomeAluno: String, codigoAluno: Int) {
+    fun excluirProfessorAdjunto(codigoProfessor: Int) {
+        for (item in listaDeProfessoresTitulares) {
+            if (item.codigoDeProfessor == codigoProfessor) {
+                listaDeProfessoresTitulares.remove(item)
+            }
+        }
+    }
+
+    fun matricularNovoAlunoNaDH(nomeAluno: String, sobrenomeAluno: String, codigoAluno: Int) {
         var novoAluno = Aluno(nomeAluno, sobrenomeAluno, codigoAluno)
         listaDeAlunos.add(novoAluno)
     }
@@ -65,23 +74,19 @@ class DigitalHouseManager {
                             var novaMatricula = Matricula(item, item2)
                             listaDeMatriculas.add(novaMatricula)
                             println("Matrícula realizada com sucesso!")
-                        } else {
-                            println("Desculpe, não foi possível realizar a sua matrícula por falta de vagas.")
                         }
-                    } else {
-                        println("Curso não encontrado.")
+                        else{println("Não há vagas disponíveis.")}
                     }
                 }
-            } else {
-                println("Aluno não encontrado.")
             }
+
         }
     }
 
     fun alocarProfessores(codigoCurso: Int, codigoProfessorAdjunto: Int, codigoProfessorTitular: Int) {
-        for (adjunto in listaDeProfessores) {
+        for (adjunto in listaDeProfessoresAdjuntos) {
             if (adjunto.codigoDeProfessor == codigoProfessorAdjunto) {
-                for (titular in listaDeProfessores) {
+                for (titular in listaDeProfessoresTitulares) {
                     if (titular.codigoDeProfessor == codigoProfessorTitular) {
                         for (curso in listaDeCursos) {
                             if (curso.codigoCurso == codigoCurso) {
@@ -92,16 +97,10 @@ class DigitalHouseManager {
                                     titular,
                                     adjunto
                                 )
-                            } else {
-                                println("Curso não encontrado.")
                             }
                         }
-                    } else {
-                        println("Professor titular não encontrado.")
                     }
                 }
-            } else {
-                println("Professor adjunto não encontrado.")
             }
         }
     }

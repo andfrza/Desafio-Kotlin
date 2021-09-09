@@ -1,8 +1,0 @@
-C:\Desafio-Kotlin\src\main\kotlin\Principal.kt
-C:\Desafio-Kotlin\src\main\kotlin\ProfessorTitular.kt
-C:\Desafio-Kotlin\src\main\kotlin\Aluno.kt
-C:\Desafio-Kotlin\src\main\kotlin\Curso.kt
-C:\Desafio-Kotlin\src\main\kotlin\Professor.kt
-C:\Desafio-Kotlin\src\main\kotlin\DigitalHouseManager.kt
-C:\Desafio-Kotlin\src\main\kotlin\Matricula.kt
-C:\Desafio-Kotlin\src\main\kotlin\ProfessorAdjunto.kt

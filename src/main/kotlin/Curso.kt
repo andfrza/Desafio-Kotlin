@@ -9,7 +9,10 @@ class Curso(var nomeDoCurso: String, var codigoCurso: Int, var quantidadeMaximaD
 
 
     fun adicionarAluno(aluno: Aluno): Boolean {
-        return listaDeAlunosMatriculados.size <= quantidadeMaximaDeAlunos
+        if(listaDeAlunosMatriculados.size <= quantidadeMaximaDeAlunos){
+            listaDeAlunosMatriculados.add(aluno)
+        }
+        return listaDeAlunosMatriculados.size-1 <= quantidadeMaximaDeAlunos
     }
 
     fun excluirAluno(aluno: Aluno) {

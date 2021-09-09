@@ -10,13 +10,13 @@ fun main() {
     diretor.registrarCurso("Android", 20002, 2)
 
     diretor.alocarProfessores(20001, 10, 2)
-    diretor.alocarProfessores(20002, 12, 3)
+    diretor.alocarProfessores(20002, 12, 1)
 
-    diretor.matricularNovoAluno("Luis", "Gabardo", 2512)
-    diretor.matricularNovoAluno("Bruno", "Kreitolv", 2005)
-    diretor.matricularNovoAluno("Felipe", "Filho", 709)
-    diretor.matricularNovoAluno("Ayrton", "Senna", 1989)
-    diretor.matricularNovoAluno("Margaret", "Tatcher", 1990)
+    diretor.matricularNovoAlunoNaDH("Luis", "Gabardo", 2512)
+    diretor.matricularNovoAlunoNaDH("Bruno", "Kreitolv", 2005)
+    diretor.matricularNovoAlunoNaDH("Felipe", "Filho", 709)
+    diretor.matricularNovoAlunoNaDH("Ayrton", "Senna", 1989)
+    diretor.matricularNovoAlunoNaDH("Margaret", "Tatcher", 1990)
 
     diretor.matricularAlunoEmCurso(2512, 20001)
     diretor.matricularAlunoEmCurso(2005, 20001)
