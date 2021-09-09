@@ -24,4 +24,12 @@ class DigitalHouseManager(
         var novoProfessorTitular = ProfessorTitular(nome, sobrenome, 0, codigo, especialidade)
         listaDeProfessores.add(novoProfessorTitular)
     }
+
+    fun excluirProfessor(codigo: Int) {
+        for (item in listaDeProfessores) {
+            if (item.codigoDeProfessor == codigo) {
+                listaDeProfessores.remove(item)
+            }
+        }
+    }
 }
