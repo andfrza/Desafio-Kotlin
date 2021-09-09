@@ -32,4 +32,9 @@ class DigitalHouseManager(
             }
         }
     }
+
+    fun matricularAluno(nome: String, sobrenome: String, codigo: Int) {
+        var novoAluno = Aluno(nome, sobrenome, codigo)
+        listaDeAlunos.add(novoAluno)
+    }
 }
