@@ -74,8 +74,10 @@ class DigitalHouseManager {
                             var novaMatricula = Matricula(item, item2)
                             listaDeMatriculas.add(novaMatricula)
                             println("Matrícula realizada com sucesso!")
+                            println()
+                        } else {
+                            println("Não há vagas disponíveis.")
                         }
-                        else{println("Não há vagas disponíveis.")}
                     }
                 }
             }

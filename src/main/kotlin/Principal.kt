@@ -18,11 +18,13 @@ fun main() {
     diretor.matricularNovoAlunoNaDH("Ayrton", "Senna", 1989)
     diretor.matricularNovoAlunoNaDH("Margaret", "Tatcher", 1990)
 
+
     diretor.matricularAlunoEmCurso(2512, 20001)
     diretor.matricularAlunoEmCurso(2005, 20001)
     diretor.matricularAlunoEmCurso(709, 20002)
     diretor.matricularAlunoEmCurso(1989, 20002)
     diretor.matricularAlunoEmCurso(1990, 20002)
+
 
 
 }
