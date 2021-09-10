@@ -2,4 +2,12 @@ open class Professor(var nomeProfessor:String, var sobrenomeProfessor:String,var
     override fun equals(other: Any?): Boolean {
         return other is Professor&&this.codigoDeProfessor==other.codigoDeProfessor
     }
+    override fun toString(): String {
+        return "${nomeProfessor} ${sobrenomeProfessor}"
+    }
+    init {
+        if(tempoDeCasa<0){
+            tempoDeCasa=0
+        }
+    }
 }
