@@ -24,22 +24,4 @@ fun main() {
     diretor.matricularAlunoEmCurso(1989, 20002)
     diretor.matricularAlunoEmCurso(1990, 20002)
 
-    println()
-    for (item in diretor.listaDeProfessoresTitulares) {
-        println(item)
-    }
-
-    println()
-    diretor.excluirProfessorTitular(2)
-    for (item in diretor.listaDeProfessoresTitulares) {
-        println(item)
-    }
-
-    println()
-    diretor.excluirProfessorAdjunto(2)
-    for (item in diretor.listaDeProfessoresAdjuntos) {
-        println(item)
-    }
-
-
 }
