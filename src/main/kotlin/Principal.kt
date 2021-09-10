@@ -1,4 +1,3 @@
-
 fun main() {
     var diretor = DigitalHouseManager()
     diretor.registrarProfessorTitular("Raphael", "Corrêa", 2, "Eletricidade")
@@ -26,9 +25,21 @@ fun main() {
     diretor.matricularAlunoEmCurso(1990, 20002)
 
     println()
-
-    for(item in diretor.listaDeCursos){
+    for (item in diretor.listaDeProfessoresTitulares) {
         println(item)
     }
+
+    println()
+    diretor.excluirProfessorTitular(2)
+    for (item in diretor.listaDeProfessoresTitulares) {
+        println(item)
+    }
+
+    println()
+    diretor.excluirProfessorAdjunto(2)
+    for (item in diretor.listaDeProfessoresAdjuntos) {
+        println(item)
+    }
+
 
 }

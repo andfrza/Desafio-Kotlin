@@ -40,7 +40,7 @@ class DigitalHouseManager {
         listaDeProfessoresTitulares.add(novoProfessorTitular)
     }
 
-    fun excluirProfessorTitular(codigoProfessor: Int) {
+    fun excluirProfessorAdjunto(codigoProfessor: Int) {
         for (item in listaDeProfessoresAdjuntos) {
             if (item.codigoDeProfessor == codigoProfessor) {
                 listaDeProfessoresAdjuntos.remove(item)
@@ -48,7 +48,7 @@ class DigitalHouseManager {
         }
     }
 
-    fun excluirProfessorAdjunto(codigoProfessor: Int) {
+    fun excluirProfessorTitular(codigoProfessor: Int) {
         for (item in listaDeProfessoresTitulares) {
             if (item.codigoDeProfessor == codigoProfessor) {
                 listaDeProfessoresTitulares.remove(item)
@@ -64,11 +64,14 @@ class DigitalHouseManager {
     fun matricularAlunoEmCurso(codigoAluno: Int, codigoCurso: Int) {
 
         var possibilidadeMatricula: Boolean
+        var verificador=0
 
         for (item in listaDeAlunos) {
             if (item.codigoDeAluno == codigoAluno) {
+                verificador++
                 for (item2 in listaDeCursos) {
                     if (item2.codigoCurso == codigoCurso) {
+                        verificador++
                         possibilidadeMatricula = item2.adicionarAluno(item)
                         if (possibilidadeMatricula) {
                             var novaMatricula = Matricula(item, item2)
@@ -83,6 +86,9 @@ class DigitalHouseManager {
             }
 
         }
+        if(verificador==0){
+            println("Favor conferir o código de aluno informado.")
+        }else if(verificador==1){println("Favor conferir o código de curso informado.")}
     }
 
     fun alocarProfessores(codigoCurso: Int, codigoProfessorAdjunto: Int, codigoProfessorTitular: Int) {
