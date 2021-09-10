@@ -1,5 +1,6 @@
 fun main() {
     var diretor = DigitalHouseManager()
+
     diretor.registrarProfessorTitular("Raphael", "Corrêa", 2, "Eletricidade")
     diretor.registrarProfessorTitular("Inácio", "Alves", 3, "Cálculo")
     diretor.registrarProfessorAdjunto("Wilmer", "Sousa", 10, 102)
